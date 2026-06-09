@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFHS-6 India State Choropleth</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">NFHS-6 State Visualisation</p>
+        <h1>India state and UT choropleth for NFHS-6 indicators</h1>
+        <p class="intro">
+          Colours are computed from the printed NFHS-6 and NFHS-5 factsheet
+          values only. The India NFHS-6 factsheet value is the reference centre
+          in national comparison mode.
+        </p>
+        <div id="app-error" class="app-error hidden" role="alert"></div>
+      </section>
+
+      <section class="toolbar">
+        <label class="control">
+          <span>Indicator</span>
+          <select id="indicator-select" aria-label="Indicator"></select>
+        </label>
+
+        <fieldset class="mode-toggle">
+          <legend>Mode</legend>
+          <label>
+            <input type="radio" name="mode" value="india" checked />
+            <span>Compare with India average</span>
+          </label>
+          <label>
+            <input type="radio" name="mode" value="nfhs5" />
+            <span>Compare with NFHS-5</span>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="content">
+        <div class="map-shell">
+          <div class="map-frame">
+            <svg
+              id="map"
+              viewBox="0 0 900 900"
+              aria-label="India state and union territory map"
+            ></svg>
+            <div id="tooltip" class="tooltip hidden"></div>
+          </div>
+
+          <section class="legend-card">
+            <div class="legend-header">
+              <div>
+                <h2>Legend</h2>
+                <p id="legend-note" class="legend-note"></p>
+              </div>
+              <button id="clear-selection" type="button" class="ghost-button">
+                Clear selection
+              </button>
+            </div>
+            <div id="legend-items" class="legend-items"></div>
+          </section>
+        </div>
+
+        <aside class="details">
+          <section class="panel">
+            <h2>Selected Indicator</h2>
+            <div id="indicator-details" class="stack"></div>
+          </section>
+
+          <section class="panel">
+            <h2>Selected States/UTs</h2>
+            <div id="selected-states" class="stack muted">
+              Click a legend bucket to select matching states and UTs.
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Hover Details</h2>
+            <div id="hover-details" class="stack muted">
+              Hover over a state or union territory.
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./vendor/d3.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
